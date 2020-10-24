@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://tmzn.in/sitemap.xml
+Host: https://tmzn.in
