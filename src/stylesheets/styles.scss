@@ -1,0 +1,31 @@
+// Load CSS Reset from NPM
+@import "~normalize.css";
+
+h1 {
+  font-size: 4em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  #main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    #logo {
+      height: 20vh;
+
+      img {
+        height: 100%;
+      }
+    }
+  }
+}
