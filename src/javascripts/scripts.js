@@ -82,7 +82,7 @@ function parseTimeZones() {
 }
 
 function loadTimeZones() {
-  fetch('./javascripts/timezones.json')
+  fetch('./timezones.json')
     .then((response) => response.json())
     .then((data) => {
       timeZones = data;
