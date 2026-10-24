@@ -1,4 +1,5 @@
 const path = require('path');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const config = require('./site.config');
 const loaders = require('./webpack.loaders');
@@ -12,22 +13,24 @@ module.exports = {
   ],
   output: {
     path: path.join(config.root, config.paths.dist),
-    filename: '[name].[hash].js',
+    filename: '[name].[contenthash].js',
+    clean: true,
   },
   mode: ['production', 'development'].includes(config.env)
     ? config.env
     : 'development',
   devtool: config.env === 'production'
     ? 'hidden-source-map'
-    : 'cheap-eval-source-map',
+    : 'eval-cheap-module-source-map',
   devServer: {
-    contentBase: path.join(config.root, config.paths.src),
-    watchContentBase: true,
+    static: { directory: path.join(config.root, config.paths.src), watch: true },
     hot: true,
-    open: true,
+    open: false,
     port: config.port,
     host: config.dev_host,
   },
+  parallelism: 2,
+  optimization: { minimizer: [new TerserPlugin({ parallel: 2 })] },
   module: {
     rules: loaders,
   },

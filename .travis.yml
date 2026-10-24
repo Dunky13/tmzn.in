@@ -1,16 +1,16 @@
 language: node_js
 
 node_js:
-  - node
-  - lts/*
+  - "26.12.1"
 
 install:
-  - SKIP_SETUP=true npm install
+  - npm ci
 
 script:
   - npm run lint:styles
   - npm run lint:js
   - npm run build:dist
+  - npm test
 
-dist: trusty
+dist: jammy
 sudo: false

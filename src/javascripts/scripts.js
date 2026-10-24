@@ -58,10 +58,12 @@ function loadSelectedTimeZone(timeZone) {
   const selectedZonesOptions = timeZones
     .find((elem) => elem.group === timeZone)
     .zones.map((myZone) => (
-      new Option(myZone.name,
+      new Option(
+        myZone.name,
         myZone.value,
         false,
-        myZone.value === selectedTZ)));
+        myZone.value === selectedTZ,
+      )));
   $('#zone').empty();
   $('#zone').append(selectedZonesOptions);
   selectedTZ = $('#zone option:selected').val();

@@ -1,11 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 
-let ROOT = process.env.PWD;
-
-if (!ROOT) {
-  ROOT = process.cwd();
-}
+const ROOT = path.resolve(__dirname, '..');
 
 const config = {
   // Your website's name, used for favicon meta tags
@@ -27,7 +23,7 @@ const config = {
   favicon: path.join(ROOT, '/src/images/favicon.png'),
 
   // Local development URL
-  dev_host: 'localhost',
+  dev_host: '0.0.0.0',
 
   // Local development port
   port: process.env.PORT || 8000,

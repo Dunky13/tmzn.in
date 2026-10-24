@@ -101,6 +101,8 @@ async function runSetup() {
   }
 };
 
-if (!skip_setup) {
+if (process.argv.includes('--install')) {
+  console.log('Dependencies installed. Run npm run setup to reconfigure the site.');
+} else if (!skip_setup) {
   runSetup();
 }
